@@ -1,6 +1,6 @@
 // API Configuration
 // In production, set this to your Render backend URL
-const API_BASE = window.ENV_API_URL || 'http://localhost:5000/api';
+const API_BASE = 'https://gym-website-68z6.onrender.com/api';
 
 const api = {
   async get(endpoint) {
