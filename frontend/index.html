@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IronPeak Fitness — Forge Your Legacy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="navbar">
+  <div class="nav-brand">
+    <span class="brand-icon">⬡</span>
+    <span class="brand-name">IRONPEAK</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#memberships">Plans</a></li>
+    <li><a href="#trainers">Trainers</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#admin" class="btn-nav-admin">Admin</a></li>
+  </ul>
+  <button class="nav-join" onclick="document.getElementById('memberships').scrollIntoView({behavior:'smooth'})">JOIN NOW</button>
+  <button class="nav-hamburger" onclick="toggleMobileNav()">☰</button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="toggleMobileNav()">About</a>
+  <a href="#memberships" onclick="toggleMobileNav()">Plans</a>
+  <a href="#trainers" onclick="toggleMobileNav()">Trainers</a>
+  <a href="#schedule" onclick="toggleMobileNav()">Schedule</a>
+  <a href="#admin" onclick="toggleMobileNav()">Admin</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-noise"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">EST. 2018 · BENGALURU</div>
+    <h1 class="hero-title">
+      <span class="line-1">FORGE</span>
+      <span class="line-2">YOUR</span>
+      <span class="line-3">LEGACY</span>
+    </h1>
+    <p class="hero-sub">Bengaluru's premier strength & conditioning facility. World-class equipment. Elite coaching. No excuses.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="document.getElementById('memberships').scrollIntoView({behavior:'smooth'})">START TODAY</button>
+      <button class="btn-ghost" onclick="document.getElementById('schedule').scrollIntoView({behavior:'smooth'})">VIEW SCHEDULE</button>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num" id="stat-members">500+</span><span class="stat-label">Members</span></div>
+    <div class="stat"><span class="stat-num">4</span><span class="stat-label">Elite Trainers</span></div>
+    <div class="stat"><span class="stat-num">26+</span><span class="stat-label">Classes/Week</span></div>
+    <div class="stat"><span class="stat-num">6Y</span><span class="stat-label">Years Strong</span></div>
+  </div>
+  <div class="scroll-hint">SCROLL ↓</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-tag">WHO WE ARE</div>
+        <h2 class="section-title" id="gymName">Loading...</h2>
+        <p class="about-desc" id="gymAbout">Loading...</p>
+        <div class="about-details">
+          <div class="detail-item"><span class="detail-icon">📍</span><span id="gymAddress">—</span></div>
+          <div class="detail-item"><span class="detail-icon">📞</span><span id="gymPhone">—</span></div>
+          <div class="detail-item"><span class="detail-icon">✉️</span><span id="gymEmail">—</span></div>
+        </div>
+        <button class="btn-outline" onclick="openEditGymModal()">Edit Gym Info</button>
+      </div>
+      <div class="about-hours">
+        <div class="hours-card">
+          <h3 class="hours-title">HOURS</h3>
+          <div class="hours-row"><span>Weekdays</span><span id="gymWeekdays">—</span></div>
+          <div class="hours-row"><span>Weekends</span><span id="gymWeekends">—</span></div>
+          <div class="hours-row"><span>Holidays</span><span id="gymHolidays">—</span></div>
+        </div>
+        <div class="amenities-card">
+          <h3 class="hours-title">AMENITIES</h3>
+          <div class="amenities-grid" id="amenitiesGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIPS -->
+<section class="memberships section" id="memberships">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">MEMBERSHIP PLANS</div>
+      <h2 class="section-title">CHOOSE YOUR <span class="text-accent">TIER</span></h2>
+      <p class="section-sub">Flexible plans built for every goal and budget.</p>
+    </div>
+    <div class="plans-grid" id="plansGrid">
+      <div class="loading-spinner">Loading plans...</div>
+    </div>
+    <div class="plans-cta">
+      <button class="btn-primary" onclick="openAddMembershipModal()">+ Add New Plan</button>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINERS -->
+<section class="trainers section" id="trainers">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">THE TEAM</div>
+      <h2 class="section-title">MEET YOUR <span class="text-accent">COACHES</span></h2>
+      <p class="section-sub">World-class experts. Real results.</p>
+    </div>
+    <div class="trainers-grid" id="trainersGrid">
+      <div class="loading-spinner">Loading trainers...</div>
+    </div>
+    <div class="plans-cta">
+      <button class="btn-primary" onclick="openAddTrainerModal()">+ Add Trainer</button>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule section" id="schedule">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">CLASS SCHEDULE</div>
+      <h2 class="section-title">WEEKLY <span class="text-accent">TIMETABLE</span></h2>
+    </div>
+    <div class="schedule-filters">
+      <button class="filter-btn active" onclick="filterSchedule('all', this)">All</button>
+      <button class="filter-btn" onclick="filterSchedule('HIIT', this)">HIIT</button>
+      <button class="filter-btn" onclick="filterSchedule('Strength', this)">Strength</button>
+      <button class="filter-btn" onclick="filterSchedule('Yoga', this)">Yoga</button>
+      <button class="filter-btn" onclick="filterSchedule('Bodybuilding', this)">Bodybuilding</button>
+    </div>
+    <div class="day-tabs">
+      <button class="day-tab active" onclick="selectDay('all', this)">All</button>
+      <button class="day-tab" onclick="selectDay('Monday', this)">Mon</button>
+      <button class="day-tab" onclick="selectDay('Tuesday', this)">Tue</button>
+      <button class="day-tab" onclick="selectDay('Wednesday', this)">Wed</button>
+      <button class="day-tab" onclick="selectDay('Thursday', this)">Thu</button>
+      <button class="day-tab" onclick="selectDay('Friday', this)">Fri</button>
+      <button class="day-tab" onclick="selectDay('Saturday', this)">Sat</button>
+      <button class="day-tab" onclick="selectDay('Sunday', this)">Sun</button>
+    </div>
+    <div class="schedule-table-wrap">
+      <table class="schedule-table" id="scheduleTable">
+        <thead>
+          <tr>
+            <th>Time</th><th>Class</th><th>Trainer</th><th>Day</th><th>Duration</th><th>Category</th><th>Room</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="scheduleBody">
+          <tr><td colspan="8" class="loading-cell">Loading schedule...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="plans-cta">
+      <button class="btn-primary" onclick="openAddScheduleModal()">+ Add Class</button>
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN PANEL -->
+<section class="admin-section section" id="admin">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">ADMIN PANEL</div>
+      <h2 class="section-title">MANAGE <span class="text-accent">YOUR GYM</span></h2>
+    </div>
+    <div class="admin-cards">
+      <div class="admin-card" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});openEditGymModal()">
+        <div class="admin-card-icon">🏢</div>
+        <h3>Gym Details</h3>
+        <p>Update name, address, hours, amenities</p>
+      </div>
+      <div class="admin-card" onclick="document.getElementById('memberships').scrollIntoView({behavior:'smooth'})">
+        <div class="admin-card-icon">💳</div>
+        <h3>Memberships</h3>
+        <p>Add, edit, or remove membership plans</p>
+      </div>
+      <div class="admin-card" onclick="document.getElementById('trainers').scrollIntoView({behavior:'smooth'})">
+        <div class="admin-card-icon">💪</div>
+        <h3>Trainers</h3>
+        <p>Manage trainer profiles and specialties</p>
+      </div>
+      <div class="admin-card" onclick="document.getElementById('schedule').scrollIntoView({behavior:'smooth'})">
+        <div class="admin-card-icon">📅</div>
+        <h3>Schedule</h3>
+        <p>Add and manage class timetable</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="brand-icon">⬡</span>
+        <span class="brand-name">IRONPEAK</span>
+        <p>Forge Your Legacy</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#memberships">Plans</a>
+        <a href="#trainers">Trainers</a>
+        <a href="#schedule">Schedule</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p id="footerAddress">© 2025 IronPeak Fitness. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ====== MODALS ====== -->
+
+<!-- Edit Gym Modal -->
+<div class="modal-overlay" id="editGymModal">
+  <div class="modal">
+    <div class="modal-header"><h3>Edit Gym Details</h3><button class="modal-close" onclick="closeModal('editGymModal')">✕</button></div>
+    <form class="modal-form" onsubmit="submitEditGym(event)">
+      <input type="hidden" id="editGymId" />
+      <label>Gym Name<input type="text" id="editGymName" required /></label>
+      <label>Tagline<input type="text" id="editGymTagline" /></label>
+      <label>Address<input type="text" id="editGymAddress" required /></label>
+      <label>Phone<input type="text" id="editGymPhone" required /></label>
+      <label>Email<input type="email" id="editGymEmail" required /></label>
+      <label>About<textarea id="editGymAboutText" rows="3"></textarea></label>
+      <div class="form-row">
+        <label>Weekday Hours<input type="text" id="editGymWeekdays" placeholder="5:00 AM – 11:00 PM" /></label>
+        <label>Weekend Hours<input type="text" id="editGymWeekends" placeholder="6:00 AM – 10:00 PM" /></label>
+      </div>
+      <label>Holiday Hours<input type="text" id="editGymHolidays" /></label>
+      <label>Amenities (comma-separated)<input type="text" id="editGymAmenities" /></label>
+      <div class="modal-actions">
+        <button type="button" class="btn-outline" onclick="closeModal('editGymModal')">Cancel</button>
+        <button type="submit" class="btn-primary">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Add Membership Modal -->
+<div class="modal-overlay" id="addMembershipModal">
+  <div class="modal">
+    <div class="modal-header"><h3 id="membershipModalTitle">Add Membership Plan</h3><button class="modal-close" onclick="closeModal('addMembershipModal')">✕</button></div>
+    <form class="modal-form" onsubmit="submitMembership(event)">
+      <input type="hidden" id="membershipId" />
+      <label>Plan Name<input type="text" id="membershipName" required /></label>
+      <div class="form-row">
+        <label>Price (₹/month)<input type="number" id="membershipPrice" required min="0" /></label>
+        <label>Accent Color<input type="color" id="membershipColor" value="#F59E0B" /></label>
+      </div>
+      <label>Features (one per line)<textarea id="membershipFeatures" rows="5" placeholder="Gym Floor Access&#10;Locker Room&#10;Group Classes" required></textarea></label>
+      <label class="checkbox-label"><input type="checkbox" id="membershipHighlighted" /> Mark as Featured Plan</label>
+      <div class="modal-actions">
+        <button type="button" class="btn-outline" onclick="closeModal('addMembershipModal')">Cancel</button>
+        <button type="submit" class="btn-primary">Save Plan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Add Trainer Modal -->
+<div class="modal-overlay" id="addTrainerModal">
+  <div class="modal">
+    <div class="modal-header"><h3 id="trainerModalTitle">Add Trainer</h3><button class="modal-close" onclick="closeModal('addTrainerModal')">✕</button></div>
+    <form class="modal-form" onsubmit="submitTrainer(event)">
+      <input type="hidden" id="trainerId" />
+      <label>Name<input type="text" id="trainerName" required /></label>
+      <label>Title<input type="text" id="trainerTitle" required placeholder="e.g. Strength & Conditioning Coach" /></label>
+      <div class="form-row">
+        <label>Experience (years)<input type="number" id="trainerExp" required min="0" /></label>
+        <label>Availability<input type="text" id="trainerAvailability" placeholder="Mon–Fri" /></label>
+      </div>
+      <label>Specialties (comma-separated)<input type="text" id="trainerSpecialties" placeholder="Powerlifting, HIIT, Mobility" /></label>
+      <label>Certifications (comma-separated)<input type="text" id="trainerCerts" placeholder="NSCA-CSCS, CPR/AED" /></label>
+      <label>Bio<textarea id="trainerBio" rows="3"></textarea></label>
+      <label>Instagram<input type="text" id="trainerInstagram" placeholder="@username" /></label>
+      <div class="modal-actions">
+        <button type="button" class="btn-outline" onclick="closeModal('addTrainerModal')">Cancel</button>
+        <button type="submit" class="btn-primary">Save Trainer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Add Schedule Modal -->
+<div class="modal-overlay" id="addScheduleModal">
+  <div class="modal">
+    <div class="modal-header"><h3 id="scheduleModalTitle">Add Class</h3><button class="modal-close" onclick="closeModal('addScheduleModal')">✕</button></div>
+    <form class="modal-form" onsubmit="submitSchedule(event)">
+      <input type="hidden" id="scheduleId" />
+      <label>Class Name<input type="text" id="scheduleClassName" required /></label>
+      <div class="form-row">
+        <label>Day
+          <select id="scheduleDay" required>
+            <option value="">Select Day</option>
+            <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+            <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+          </select>
+        </label>
+        <label>Time<input type="text" id="scheduleTime" required placeholder="6:00 AM" /></label>
+      </div>
+      <label>Trainer<input type="text" id="scheduleTrainer" required /></label>
+      <div class="form-row">
+        <label>Duration (min)<input type="number" id="scheduleDuration" required min="1" /></label>
+        <label>Capacity<input type="number" id="scheduleCapacity" required min="1" /></label>
+      </div>
+      <div class="form-row">
+        <label>Category
+          <select id="scheduleCategory">
+            <option>HIIT</option><option>Strength</option><option>Yoga</option>
+            <option>Bodybuilding</option><option>Cardio</option><option>Other</option>
+          </select>
+        </label>
+        <label>Room<input type="text" id="scheduleRoom" placeholder="Studio A" /></label>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-outline" onclick="closeModal('addScheduleModal')">Cancel</button>
+        <button type="submit" class="btn-primary">Save Class</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

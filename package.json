@@ -1,0 +1,10 @@
+{
+  "name": "ironpeak-gym",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start:backend": "cd backend && npm start",
+    "dev:backend": "cd backend && npm run dev",
+    "install:backend": "cd backend && npm install"
+  }
+}
