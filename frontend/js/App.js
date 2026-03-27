@@ -131,8 +131,9 @@ function renderMemberships(plans) {
         ${(p.features || []).map(f => `<li>${f}</li>`).join('')}
       </ul>
       <div class="plan-actions">
+        <button class="btn-primary" style="flex:1;font-size:13px;padding:10px" onclick="openCheckout('${p.name}', ${p.price})">BUY NOW</button>
         <button class="btn-edit" onclick="openEditMembershipModal('${p._id}')">Edit</button>
-        <button class="btn-danger" onclick="deleteMembership('${p._id}')">Delete</button>
+        <button class="btn-danger" onclick="deleteMembership('${p._id}')">Del</button>
       </div>
     </div>
   `).join('');
